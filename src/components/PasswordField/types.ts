@@ -1,5 +1,6 @@
 import React from 'react';
 import { PasswordIndicatorVariant } from '../PasswordIndicator/types';
+import type { TextInputComponent } from '../InputField/types';
 
 export interface PasswordFieldProps {
   label: string;
@@ -22,6 +23,7 @@ export interface PasswordFieldProps {
   infoBox?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  as?: TextInputComponent;
   /** @deprecated Use placeholder instead */
   placeholderText?: string;
   /** @deprecated Use onChange instead */

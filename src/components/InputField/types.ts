@@ -1,7 +1,10 @@
 import React from 'react';
+import type { TextInputProps } from 'react-native';
 
 /** @deprecated Use error prop instead */
 export type InputFieldVariant = 'default' | 'error';
+
+export type TextInputComponent = React.ComponentType<TextInputProps>;
 
 export interface InputValueProps {
   value: string;
@@ -15,6 +18,7 @@ export interface InputValueProps {
   onFocus: () => void;
   onBlur: () => void;
   onClick?: () => void;
+  as?: TextInputComponent;
 }
 
 export interface InputFieldProps {
@@ -38,6 +42,7 @@ export interface InputFieldProps {
   onFocus?: () => void;
   onBlur?: () => void;
   onClick?: () => void;
+  as?: TextInputComponent;
   /** @deprecated Use placeholder instead */
   placeholderText?: string;
   /** @deprecated Use onChange instead */
