@@ -42,6 +42,9 @@ export const styles = css.create({
     boxSizing: 'border-box',
     boxShadow: tokens.shadowMenu
   },
+  menuContainerFullWidth: {
+    alignItems: 'stretch'
+  },
   menuPosition: (top: number, left: number, width: number) => ({
     top,
     left,
