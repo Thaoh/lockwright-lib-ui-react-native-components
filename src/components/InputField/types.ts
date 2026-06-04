@@ -6,9 +6,17 @@ export type InputFieldVariant = 'default' | 'error';
 
 export type TextInputComponent = React.ComponentType<TextInputProps>;
 
+export type InputFieldInputType =
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'tel'
+  | 'url';
+
 export interface InputValueProps {
   value: string;
-  type?: 'text' | 'password';
+  type?: InputFieldInputType;
   name?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -28,7 +36,7 @@ export interface InputFieldProps {
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
-  inputType?: 'text' | 'password';
+  inputType?: InputFieldInputType;
   leftSlot?: React.ReactNode;
   rightSlot?: React.ReactNode;
   disabled?: boolean;
