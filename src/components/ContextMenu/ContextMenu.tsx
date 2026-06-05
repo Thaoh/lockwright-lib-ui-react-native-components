@@ -15,12 +15,14 @@ export type ContextMenuProps = Omit<HtmlDivProps, 'children'> & {
   fullWidth?: boolean
   closeOnContentClick?: boolean
   stretch?: boolean
+  /** When 'top', the menu opens above the trigger instead of below it. */
+  menuPlacement?: 'top' | 'bottom'
   testID?: string
 }
 
 export const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
   function ContextMenu(
-    { trigger, children, open, onOpenChange, menuWidth = MENU_WIDTH, fullWidth = false, closeOnContentClick = true, stretch = false, testID, ...rest },
+    { trigger, children, open, onOpenChange, menuWidth = MENU_WIDTH, fullWidth = false, closeOnContentClick = true, stretch = false, menuPlacement = 'bottom', testID, ...rest },
     ref
   ) {
     const isControlled = open !== undefined
@@ -90,19 +92,39 @@ export const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
 
     const wrapperStyle = fullWidth ? styles.triggerWrapperFullWidth : styles.triggerWrapper
 
+    const MENU_GAP = 5
+    const VIEWPORT_PADDING = 8
+    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 0
+
     const resolvedMenuWidth = fullWidth && triggerRect ? triggerRect.width : menuWidth
-    const menuTop = triggerRect ? triggerRect.bottom + 5 : 0
     const menuLeft = triggerRect
       ? fullWidth
         ? triggerRect.left
         : Math.max(triggerRect.right - menuWidth, 0)
       : 0
 
-    const VIEWPORT_PADDING = 8
-    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 0
+    const opensAbove = menuPlacement === 'top'
+    const menuPositionStyle =
+      opensAbove && triggerRect
+        ? styles.menuPositionFromBottom(
+            viewportHeight - triggerRect.top + MENU_GAP,
+            menuLeft,
+            resolvedMenuWidth
+          )
+        : styles.menuPosition(
+            triggerRect ? triggerRect.bottom + MENU_GAP : 0,
+            menuLeft,
+            resolvedMenuWidth
+          )
+
     const stretchMaxHeight =
       stretch && triggerRect
-        ? Math.max(viewportHeight - triggerRect.bottom - VIEWPORT_PADDING, 120)
+        ? Math.max(
+            opensAbove
+              ? triggerRect.top - VIEWPORT_PADDING - MENU_GAP
+              : viewportHeight - triggerRect.bottom - VIEWPORT_PADDING,
+            120
+          )
         : undefined
 
     return (
@@ -124,7 +146,7 @@ export const ContextMenu = React.forwardRef<HTMLDivElement, ContextMenuProps>(
               style={[
                 styles.menuContainer,
                 fullWidth && styles.menuContainerFullWidth,
-                styles.menuPosition(menuTop, menuLeft, resolvedMenuWidth),
+                menuPositionStyle,
                 stretchMaxHeight !== undefined && styles.menuMaxHeight(stretchMaxHeight)
               ]}
             >

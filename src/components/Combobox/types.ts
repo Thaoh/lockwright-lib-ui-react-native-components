@@ -29,6 +29,8 @@ export type ComboboxProps = {
    * available space between the trigger and the viewport bottom edge so it
    * never overflows the window. Content scrolls inside. Default: false. */
   stretch?: boolean
+  /** When 'top', the dropdown opens above the field instead of below it. */
+  menuPlacement?: 'top' | 'bottom'
   clearAriaLabel?: string
   closeAriaLabel?: string
   testID?: string
