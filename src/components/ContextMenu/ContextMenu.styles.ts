@@ -50,6 +50,11 @@ export const styles = css.create({
     left,
     width
   }),
+  menuPositionFromBottom: (bottom: number, left: number, width: number) => ({
+    bottom,
+    left,
+    width
+  }),
   menuMaxHeight: (maxHeight: number) => ({
     maxHeight
   })

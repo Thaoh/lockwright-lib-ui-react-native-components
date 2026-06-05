@@ -31,6 +31,7 @@ export const Combobox = function Combobox({
   open,
   onOpenChange,
   stretch = false,
+  menuPlacement = 'bottom',
   clearAriaLabel = 'Clear',
   closeAriaLabel = 'Close',
   testID,
@@ -97,6 +98,7 @@ export const Combobox = function Combobox({
       testID={testID}
       fullWidth
       stretch={stretch}
+      menuPlacement={menuPlacement}
       closeOnContentClick={false}
       trigger={
         <SelectField
