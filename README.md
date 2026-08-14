@@ -1,3 +1,6 @@
+> [!WARNING]
+> 🍐 PearPass is currently paused from active development, so please use at your own caution until further notice.
+
 # pearpass-lib-ui-react-native-components
 
 A library of reusable React Native components designed for the Pearpass ecosystem mobile applications
