@@ -21,7 +21,7 @@ export const rawTokens = {
     radius16: 16,
     radius20: 20,
     radius26: 26,
-    shadowMenu: "0 185px 52px 0 rgba(8,10,5,0.01), 0 118px 47px 0 rgba(8,10,5,0.06), 0 67px 40px 0 rgba(8,10,5,0.20), 0 30px 30px 0 rgba(8,10,5,0.34), 0 7px 16px 0 rgba(8,10,5,0.39)",
+    shadowMenu: "0 185px 52px 0 rgba(8,9,11,0.01), 0 118px 47px 0 rgba(8,9,11,0.06), 0 67px 40px 0 rgba(8,9,11,0.20), 0 30px 30px 0 rgba(8,9,11,0.34), 0 7px 16px 0 rgba(8,9,11,0.39)",
     fontPrimary: "Inter",
     fontDisplay: "Humble Nostalgia",
     fontSize12: 12,
