@@ -54,7 +54,7 @@ export const InputValue = ({ inputRef, as: AsComponent, ...rest }: InputValuePro
       onClick={disabled ? undefined : onClick}
       style={[styles.input, disabled && styles.containerDisabled]}
     >
-      {renderNative}
+      {renderNative as unknown as React.ReactNode}
     </html.input>
   );
 };
