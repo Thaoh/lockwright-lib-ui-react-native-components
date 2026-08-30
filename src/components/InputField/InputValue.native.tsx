@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, type TextInputProps } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, type TextInputProps } from 'react-native';
 import { html } from 'react-strict-dom';
 import { useTheme } from '../../theme';
 import { rawTokens } from '../../theme/tokens.raw';
@@ -8,7 +8,7 @@ import { InputValueProps } from './types';
 
 export const InputValue = ({ inputRef, as: AsComponent, ...rest }: InputValueProps): React.ReactElement => {
   const { theme } = useTheme();
-  const { value, type, placeholder, disabled, readOnly, onClick } = rest;
+  const { value, type, placeholder, disabled, readOnly, onClick, autoCorrect } = rest;
 
   if (readOnly) {
     const hasValue = Boolean(value);
@@ -36,9 +36,16 @@ export const InputValue = ({ inputRef, as: AsComponent, ...rest }: InputValuePro
     );
   }
 
-  const renderAs = AsComponent
-    ? ((nativeProps: TextInputProps) => <AsComponent {...nativeProps} />) as unknown as React.ReactNode
-    : undefined;
+  const renderNative = (nativeProps: TextInputProps) => {
+    const merged: TextInputProps = {
+      ...nativeProps,
+      ...(autoCorrect != null ? { autoCorrect } : {}),
+    };
+    if (AsComponent) {
+      return <AsComponent {...merged} />;
+    }
+    return <TextInput {...merged} />;
+  };
 
   return (
     <html.input
@@ -47,7 +54,7 @@ export const InputValue = ({ inputRef, as: AsComponent, ...rest }: InputValuePro
       onClick={disabled ? undefined : onClick}
       style={[styles.input, disabled && styles.containerDisabled]}
     >
-      {renderAs}
+      {renderNative}
     </html.input>
   );
 };

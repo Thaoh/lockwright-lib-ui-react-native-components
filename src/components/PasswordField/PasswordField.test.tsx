@@ -270,6 +270,41 @@ describe('PasswordField', () => {
     expect(input().props.type).toBe('password');
   });
 
+  it('keeps keyboard autocomplete off so a suggestion cannot append a space', () => {
+    let component: renderer.ReactTestRenderer;
+
+    act(() => {
+      component = renderer.create(
+        <PasswordField
+          label="Password"
+          value="secret"
+          placeholderText="Enter your password"
+          onChangeText={() => { }}
+          testID="password-field"
+        />
+      );
+    });
+
+    const input = () => component!.root.findByType('input');
+    const expectNoSuggest = () => {
+      expect(input().props.autoCorrect).toBe(false);
+      expect(input().props.autoComplete).toBe('off');
+      expect(input().props.autoCapitalize).toBe('none');
+      expect(input().props.spellCheck).toBe(false);
+    };
+
+    expectNoSuggest();
+
+    act(() => {
+      component!.root
+        .findByProps({ 'data-testid': 'password-field-eye-button' })
+        .props.onClick();
+    });
+
+    expect(input().props.type).toBe('text');
+    expectNoSuggest();
+  });
+
   it('does not render info box when infoBox prop is not provided', () => {
     let component: renderer.ReactTestRenderer;
 

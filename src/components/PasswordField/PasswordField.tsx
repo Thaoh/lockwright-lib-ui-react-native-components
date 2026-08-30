@@ -110,6 +110,10 @@ export const PasswordField = (props: PasswordFieldProps): React.ReactElement => 
       onFocus={() => { setIsFocused(true); onFocus?.(); }}
       onBlur={() => { setIsFocused(false); onBlur?.(); }}
       as={as}
+      autoCapitalize="none"
+      autoCorrect={false}
+      autoComplete="off"
+      spellCheck={false}
     />
   );
 

@@ -22,6 +22,9 @@ export interface InputValueProps {
   disabled?: boolean;
   readOnly?: boolean;
   autoCapitalize?: TextInputProps['autoCapitalize'];
+  autoCorrect?: TextInputProps['autoCorrect'];
+  autoComplete?: TextInputProps['autoComplete'];
+  spellCheck?: TextInputProps['spellCheck'];
   inputRef: React.RefObject<HTMLInputElement | null>;
   onInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus: () => void;
@@ -52,6 +55,9 @@ export interface InputFieldProps {
   onBlur?: () => void;
   onClick?: () => void;
   autoCapitalize?: TextInputProps['autoCapitalize'];
+  autoCorrect?: TextInputProps['autoCorrect'];
+  autoComplete?: TextInputProps['autoComplete'];
+  spellCheck?: TextInputProps['spellCheck'];
   as?: TextInputComponent;
   /** @deprecated Use placeholder instead */
   placeholderText?: string;

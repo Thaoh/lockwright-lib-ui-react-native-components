@@ -1,4 +1,5 @@
 import React from 'react';
+import { TextInput } from 'react-native';
 import renderer, { act } from 'react-test-renderer';
 import { InputField } from './InputField';
 import { FieldErrorProps } from '../FieldError/FieldError';
@@ -184,7 +185,7 @@ describe('InputField', () => {
     ).not.toThrow();
   });
 
-  it('does not pass a function child when `as` is omitted', () => {
+  it('renders TextInput via the html.input render-prop when `as` is omitted', () => {
     let component: renderer.ReactTestRenderer;
 
     act(() => {
@@ -200,7 +201,20 @@ describe('InputField', () => {
     });
 
     const inputEl = component!.root.findByType('input');
-    expect(typeof inputEl.props.children).not.toBe('function');
+    expect(typeof inputEl.props.children).toBe('function');
+
+    const renderAs = inputEl.props.children as (
+      p: Record<string, unknown>
+    ) => React.ReactNode;
+
+    let host: renderer.ReactTestRenderer;
+    act(() => {
+      host = renderer.create(
+        <>{renderAs({ value: '', placeholder: 'Enter your email' })}</>
+      );
+    });
+
+    expect(host!.root.findByType(TextInput)).toBeTruthy();
   });
 
   it('fires onClick exactly once when a readOnly trigger is clicked', () => {

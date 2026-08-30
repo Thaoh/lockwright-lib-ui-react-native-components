@@ -38,6 +38,9 @@ export const InputField = (props: InputFieldProps): React.ReactElement => {
     onClick,
     as,
     autoCapitalize,
+    autoCorrect,
+    autoComplete,
+    spellCheck,
   } = props;
 
   const resolvedError = error ?? errorMessage;
@@ -113,6 +116,9 @@ export const InputField = (props: InputFieldProps): React.ReactElement => {
             onClick={onClick}
             as={as}
             autoCapitalize={autoCapitalize}
+            autoCorrect={autoCorrect}
+            autoComplete={autoComplete}
+            spellCheck={spellCheck}
           />
         </html.div>
         {(rightSlot || copyable) && (
