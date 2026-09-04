@@ -1,77 +1,84 @@
-# pearpass-lib-ui-react-native-components
+<p align="center">
+  <img src="docs/logo.svg" alt="Lockwright" width="128"/>
+</p>
 
-This package contains the shared UI component library used across all PearPass client applications:
-- **Mobile app** 
-- **Desktop app** 
-- **Browser extension**
+# lockwright-lib-ui-react-native-components
 
-## Table of Contents
+Shared UI kit for Lockwright. Desktop, mobile, and the browser extension use it.
 
-- [Table of Contents](#table-of-contents)
-- [Core Architecture](#core-architecture)
-- [Getting Started](#getting-started)
+Site: [lockwright.dexterity.works](https://lockwright.dexterity.works)
+
+Community fork of PearPass (Apache 2.0). Not affiliated with or endorsed by Tether Data or the Pears project.
+
+Imports stay `@tetherto/pearpass-lib-ui-kit` in the apps. That npm name is not this fork if you install it from the npm registry.
+
+## Table of contents
+
+- [Architecture](#architecture)
+- [Getting started](#getting-started)
 - [Dependencies](#dependencies)
-- [Related Projects](#related-projects)
+- [Related projects](#related-projects)
+- [Contributing](#contributing)
+- [License](#license)
 
-## 🏗 Core Architecture
+## Architecture
 
-This library is built using **React Strict DOM** to provide a strict, web-standards-aligned API that renders as optimized standard HTML/CSS on web/desktop, and maps efficiently to native components on mobile.
+React Strict DOM. One component API. HTML and CSS on web and desktop. Native views on mobile.
 
-## 🚀 Getting Started
+## Getting started
 
-We use **Storybook** as the central place to build, test, and preview components locally. 
-
-### Running Storybook
-
-Inside this directory, simply run:
+Storybook is the local preview.
 
 ```bash
 npm install
 npm run storybook
 ```
 
-This will spin up a local server rendering components using Vite and React DOM. You can preview all states and interactions.
+That serves the Vite React DOM build. You can click through states there.
 
-### Running Storybook on Native (iOS/Android)
-
-To preview components on a real device or simulator using React Native:
+Native preview (iOS or Android):
 
 ```bash
 cd storybook-native
 npm install
 ```
 
-Then run on iOS or Android:
-
 ```bash
-# From the root directory
+# From the package root
 npm run storybook:native:ios
 npm run storybook:native:android
 
-# Or from the storybook-native directory
+# Or from storybook-native
 npx expo run:ios
 npx expo run:android
 ```
 
-The native Storybook reuses the same stories as the web version. It runs inside a minimal Expo app located in `storybook-native/`.
+The native app in `storybook-native/` loads the same stories.
 
 ## Dependencies
 
-This library has the following peer dependencies:
+Peer dependencies:
 
 - [`react`](https://reactjs.org/)
 - [`react-native`](https://reactnative.dev/)
 - [`react-native-svg`](https://github.com/software-mansion/react-native-svg)
 - [`react-strict-dom`](https://github.com/facebook/react-strict-dom)
 
-For a full list of dependencies, refer to the `package.json` file.
+The full list is in `package.json`.
 
-## Related Projects
+## Related projects
 
-- [pearpass-utils-password-check](https://github.com/tetherto/pearpass-utils-password-check): Utility functions for password validation.
-- [tether-dev-docs](https://github.com/tetherto/tether-dev-docs): Shared ESLint configurations and development tools for Tether projects.
-- [pearpass-lib-ui-theme-provider](https://github.com/tetherto/pearpass-lib-ui-theme-provider): Theme provider for consistent styling across Pearpass UI components.
+- [lockwright-app-desktop](https://github.com/Thaoh/lockwright-app-desktop)
+- [lockwright-app-mobile](https://github.com/Thaoh/lockwright-app-mobile)
+- [lockwright-app-browser-extension](https://github.com/Thaoh/lockwright-app-browser-extension)
+- [pearpass-utils-password-check](https://github.com/tetherto/pearpass-utils-password-check)
+- [pearpass-lib-ui-theme-provider](https://github.com/tetherto/pearpass-lib-ui-theme-provider)
+- [tether-dev-docs](https://github.com/tetherto/tether-dev-docs)
+
+## Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
-This project is licensed under the Apache License, Version 2.0. See the [LICENSE](./LICENSE) file for details.
+Apache License 2.0. See `LICENSE` and `NOTICE`.

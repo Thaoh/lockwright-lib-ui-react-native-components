@@ -1,25 +1,24 @@
-# Contributing to PearPass
+# Contributing to Lockwright
 
-The source is open to use as per the [LICENSE](./LICENSE).
- 
-Be aware that **any pull-request or issue may be closed without explanation**.
+The source is Apache 2.0. See [LICENSE](./LICENSE).
+
+Open issues and pull requests on this repository.
+
+A pull request or issue may be closed without explanation.
 
 ## Issues
 
-- Feature requests are welcome. 
-- For bug reports, please provide a failing test case or steps to reproduce. 
+Feature requests are welcome. Bug reports need a failing test or steps to reproduce.
 
-## Pull Request
+## Pull requests
 
-Newer contributors are encouraged to start small and simple. Tests - both failing and passing - are very helpful.
+Start small. Tests, failing and passing, help.
 
-- Keep pull requests focused on a single feature or bug fix
-- Provide a clear description of changes
-- Ensure code passes linting: `npm run lint`
-- Ensure tests are passing: `npm test`
-  - except, of course, any added failing tests
-
+- One feature or bug per pull request
+- Describe the change
+- `npm run lint` must pass
+- `npm test` must pass, except tests you added that are meant to fail
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the project [LICENSE](./LICENSE).
+Contributions are licensed under the project [LICENSE](./LICENSE).
